@@ -31,7 +31,7 @@
             <input type="button" value="Show Videos" id="videoButton" class="buttons" ng-click='switchVideoClick()'ng-show="switchButtons"/>
         </div>
     <div align="center" id="wrapper">
-      <img src="img/276.gif" id="loading" ng-show="isloading"></img>
+      <img src="img/276.GIF" id="loading" ng-show="isloading"></img>
       <ul id="imageLocation" ng-show="imagesDisplay">
         <div id="result" ng-bind="returnedImages"></div>
         <li class="items" ng-repeat="mediaResult in mediaResults">
@@ -54,7 +54,7 @@
         <p class="caption2">USER NAME : {{userResult.data.username}}</p>
         <p class="caption2">NAME : {{userResult.data.full_name}}</p>
         <p class="caption2">MEDIA POSTS : {{userResult.data.counts.media}}</p>
-        <p class="caption2"><img src="img/214.gif"></img> : {{userResult.data.counts.follows}}  <img src="img/187.gif"></img> : {{userResult.data.counts.followed_by}}</p>
+        <p class="caption2"><img src="img/214.GIF"></img> : {{userResult.data.counts.follows}}  <img src="img/187.GIF"></img> : {{userResult.data.counts.followed_by}}</p>
         <p class="caption2">USER ID : {{userResult.data.id}}</p>
         </li>
       </ul>
