@@ -1,0 +1,31 @@
+var app = angular.module('Instasearch',[]);
+app.controller('globalController',function($scope,$http){
+	$scope.hash;
+	$scope.base = "https://api.instagram.com/v1";
+	$scope.config={
+		params:{
+			q:$scope.hash,
+			client_id: '67856d71a07c42a78e7ef7675bf5afe5',
+			callback:"JSONP_CALLBACK",
+			},
+	};
+	$scope.validate=function(){
+		var userInput = $scope.hash;
+			userInput = userInput.trim();
+			if (/^[#@]/.test(userInput)===true){
+				var stopValue = userInput.length;
+				userInput = userInput.substring(1,stopValue);
+			}	
+			$scope.testInput(userInput);
+
+	};
+	$scope.testInput=function(value){
+			if((value.length>1)&&(/^[a-zA-Z0-9_]*$/.test(value) === true))
+			{
+				alert('correct input');
+			}
+			else{
+				alert('wrong input');
+			}
+	};
+});

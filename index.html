@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="Instasearch">
+  <head>
+    <meta charset="utf-8">
+    <title>Insta Search || &copy Kehesjay</title>
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Indie+Flower|Playball' rel='stylesheet' type='text/css'></link>
+    <link rel="stylesheet" href="css/main.css"></link>
+    <script src="js/angular.min.js"></script>
+    <script src="js/myApp.js" type="text/javascript" charset="utf-8"></script>
+     <meta name="viewport" content="width=device-width , initial-scale=1.0">
+  </head>
+  <body ng-controller="globalController"> 
+    <header>
+      <div>
+        <img src="img/710.gif" id="headgif"></img>
+        <h3>Insta Search.Com</h3>
+        <div id="searchContainer">
+          <p>
+            <form action="#">
+              <input type="text" id="searchInput"  placeholder="Enter Hash tags or username here " ng-model="hashed"/>
+              <input type="submit" value="Search Media" id="connectButton" ng-click='connectButtonClick()'/>
+              <input type="submit" value="Search People" id="connectButton2" ng-click='connectButton2Click()'/>
+            </form>
+          </p>
+          <p id="invalidInput" ng-bind="invalidHash"></p>
+        </div>    
+      </div> 
+    </header>
+     <div id="buttonsDiv">
+            <input type="button"value="Show Images" id="imageButton" class="buttons"ng-click='switchImageClick()'ng-show="switchButtons"/>
+            <input type="button" value="Show Videos" id="videoButton" class="buttons" ng-click='switchVideoClick()'ng-show="switchButtons"/>
+        </div>
+    <div align="center" id="wrapper">
+      <img src="img/276.gif" id="loading" ng-show="isloading"></img>
+      <ul id="imageLocation" ng-show="imagesDisplay">
+        <div id="result" ng-bind="returnedImages"></div>
+        <li class="items" ng-repeat="mediaResult in mediaResults">
+        <img ng-src="{{mediaResult.images.low_resolution.url}}" class="pic" width="100%" height="250" />
+        <p class="caption">Filter Used : {{mediaResult.filter}}</p>
+        </li>
+      </ul>
+      <ul id="videoLocation" ng-show="switchVideo">
+        <div id="result" ng-bind="returnedVideos"></div>
+<li class="items" ng-repeat="videoResult in videoResults"> 
+    <video controls  class="vid" width="100%" height="300" ng-src='{{videoResult.videos.low_resolution.url}}'>
+      </video>
+      <p class="caption">{{videoResult.caption.from.full_name}}</p>
+    </li>
+      </ul>
+      <ul id="infoLocation" ng-show="userDisplay" >
+        <div id="result" ng-bind="returnedFiles"></div>
+        <li class="items" ng-repeat="userResult in userResults">
+        <img ng-src="{{userResult.data.profile_picture}}" class="pic" width="100%"/>
+        <p class="caption2">USER NAME : {{userResult.data.username}}</p>
+        <p class="caption2">NAME : {{userResult.data.full_name}}</p>
+        <p class="caption2">MEDIA POSTS : {{userResult.data.counts.media}}</p>
+        <p class="caption2"><img src="img/214.gif"></img> : {{userResult.data.counts.follows}}  <img src="img/187.gif"></img> : {{userResult.data.counts.followed_by}}</p>
+        <p class="caption2">USER ID : {{userResult.data.id}}</p>
+        </li>
+      </ul>
+    </div>
+  </body>  
+</html>
